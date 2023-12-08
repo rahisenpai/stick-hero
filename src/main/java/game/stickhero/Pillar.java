@@ -9,6 +9,7 @@ public class Pillar {
 
     Pillar(int w){
         this.width = w;
+        this.rectangle = new Rectangle(w,130);
     }
     Pillar(Rectangle r){
         this.rectangle = r;

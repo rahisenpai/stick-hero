@@ -1,14 +1,12 @@
 package game.stickhero;
 
 import javafx.animation.*;
-import javafx.event.EventHandler;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-import javafx.event.ActionEvent;
 
 public class Stick {
-    private static Hero hero;
+    private Hero hero;
     final private int width;
     private boolean waiting;
     private double length;
@@ -28,7 +26,7 @@ public class Stick {
             this.waiting = false;
             timeline = new Timeline(new KeyFrame(Duration.millis(25), e -> {
                 this.length += 5;
-                this.rectangle.setLayoutY(rectangle.getLayoutY() - 5);
+                this.rectangle.setY(rectangle.getY() - 5);
                 this.rectangle.setHeight(this.length);
             }));
             timeline.setCycleCount(Timeline.INDEFINITE);
@@ -41,17 +39,11 @@ public class Stick {
             timeline.stop();
             Rotate rotate = new Rotate(0,this.rectangle.getX(),this.rectangle.getY()+this.rectangle.getHeight());
             this.rectangle.getTransforms().add(rotate);
-            timeline = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(rotate.angleProperty(), 0)),
-                    new KeyFrame(Duration.seconds(1), new KeyValue(rotate.angleProperty(), 90))
+            timeline = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(rotate.angleProperty(), 0,Interpolator.EASE_BOTH)),
+                    new KeyFrame(Duration.millis(1000), new KeyValue(rotate.angleProperty(), 90,Interpolator.EASE_BOTH))
             );
             timeline.play();
-            timeline.setOnFinished( new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            Stick.hero.move();
-                        }
-                }
-            );
+            timeline.setOnFinished( e -> this.hero.move());
         }
     }
 
