@@ -1,6 +1,7 @@
 package game.stickhero;
 
 import java.io.IOException;
+import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,14 +10,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class Controller {
+public class PrimaryController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private static GamePlay newGamePlay;
 
-    public void loadGame(ActionEvent event) throws IOException {
+    public void resume(ActionEvent event) {
+        newGamePlay.getController().getPane().getChildren().remove(((Node)event.getSource()).getParent());
+        newGamePlay.getAnimations().forEach(Animation::play);
+    }
+
+    public void startGame(ActionEvent event) throws IOException {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        GamePlay newGamePlay = new GamePlay(stage);
+        newGamePlay = new GamePlay(stage);
         newGamePlay.display();
     }
 
@@ -26,5 +33,9 @@ public class Controller {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void exitGame(ActionEvent event){
+        System.exit(0);
     }
 }

@@ -1,9 +1,8 @@
 package game.stickhero;
 
-import javafx.event.ActionEvent;
+import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -13,7 +12,9 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import java.io.IOException;
 
+
 public class GamePlayController {
+    private Stage stage;
     private Scene scene;
     private GamePlay gameplay;
     private  Hero hero;
@@ -27,8 +28,9 @@ public class GamePlayController {
     @FXML
     private Rectangle r1, r2;
 
-    public void setup(Scene scene, GamePlay g){
+    public void setup(Scene scene, Stage stage, GamePlay g){
         this.scene = scene;
+        this.stage = stage;
         this.gameplay = g;
         this.hero = new Hero(75,65,avatar, this.gameplay);
         Stick stick = this.hero.getStick();
@@ -39,20 +41,51 @@ public class GamePlayController {
         stick.getRectangle().setLayoutY(470);
         this.cp = new Pillar(r1);
         this.np = new Pillar(r2);
+
         scene.setOnMousePressed(event -> {
             this.hero.getStick().extend();
         });
         scene.setOnMouseReleased(event -> {
             this.hero.getStick().rotate();
         });
+        scene.setOnKeyPressed(event -> {
+            String code = event.getCode().toString();
+            if (code.equals("SPACE")){
+                this.hero.getStick().extend();
+            }
+            else if (code.equals("ESCAPE")){
+                this.gameplay.getAnimations().forEach(Animation::pause);
+                pause();
+            }
+        });
+        scene.setOnKeyReleased(event -> {
+            String code = event.getCode().toString();
+            if (code.equals("SPACE")){
+                this.hero.getStick().rotate();
+            }
+        });
     }
 
-    public void pause(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("pause.fxml"));
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void pause() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("pause.fxml"));
+            this.pane.getChildren().add(root);
+            root.setLayoutX(200);
+            root.setLayoutY(150);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void gameOver() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
+            this.pane.getChildren().add(root);
+            root.setLayoutX(200);
+            root.setLayoutY(150);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Hero getHero() {

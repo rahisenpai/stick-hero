@@ -1,5 +1,6 @@
 package game.stickhero;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -8,18 +9,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class GamePlay {
     private int cherries;
+    private ArrayList<Animation> animations;
     private Stage stage;
     private GamePlayController controller;
 
     public void display() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
         controller = fxmlLoader.getController();
-        controller.setup(scene,this);
+        controller.setup(scene,this.stage,this);
+        this.animations = new ArrayList<Animation>();
+        stage.setScene(scene);
     }
 
     public void screenTransition(){
@@ -40,21 +45,35 @@ public class GamePlay {
         Timeline timeline = new Timeline(k1,k2);
 
         timeline.setOnFinished(e -> {
+            this.animations.remove(timeline);
             Stick newStick = new Stick(10, hero);
             hero.setStick(newStick);
             newStick.getRectangle().setLayoutX(127);
             newStick.getRectangle().setLayoutY(470);
-            Pillar newP = new Pillar(50);
-            newP.getRectangle().setLayoutX(470);
+            Pillar newP = new Pillar(75 + (int)(Math.random() * ((150-75) + 1)));
+            newP.getRectangle().setLayoutX(200 + (int)(Math.random() * ((550-200) + 1)));
             newP.getRectangle().setLayoutY(470);
             this.controller.getPane().getChildren().addAll(newStick.getRectangle(), newP.getRectangle());
             this.controller.setCp(np);
             this.controller.setNp(newP);
         });
+        this.animations.add(timeline);
         timeline.play();
     }
 
+    public ArrayList<Animation> getAnimations() {
+        return animations;
+    }
+    public void addAnimation(Animation a){
+        this.animations.add(a);
+    }
+    public void removeAnimation(Animation a){
+        this.animations.remove(a);
+    }
     public GamePlay(Stage stage){
         this.stage = stage;
+    }
+    public GamePlayController getController() {
+        return controller;
     }
 }
