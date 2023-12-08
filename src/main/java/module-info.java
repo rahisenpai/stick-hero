@@ -1,8 +1,8 @@
-module com.game.stickhero {
+module game.stickhero {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.game.stickhero to javafx.fxml;
-    exports com.game.stickhero;
+    opens game.stickhero to javafx.fxml;
+    exports game.stickhero;
 }

@@ -1,4 +1,4 @@
-package com.game.stickhero;
+package game.stickhero;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,19 +18,14 @@ public class Controller {
     private Scene scene;
     private Parent root;
 
-    @FXML
-    private Hero hero;
-    @FXML
-    private Pillar pillar;
-    @FXML
-    private Label cherries;
-
     public void loadGame(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
+//        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+        GamePlay newGamePlay = new GamePlay(stage);
+        newGamePlay.display();
     }
 
     public void loadHome(ActionEvent event) throws IOException {
@@ -41,11 +36,4 @@ public class Controller {
         stage.show();
     }
 
-    public void pause(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("pause.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }

@@ -1,4 +1,4 @@
-package com.game.stickhero;
+package game.stickhero;
 
 
 public class Cherries {

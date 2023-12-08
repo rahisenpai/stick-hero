@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.game</groupId>
+    <groupId>game</groupId>
     <artifactId>stick-hero</artifactId>
     <version>1.0</version>
     <name>stick-hero</name>
@@ -56,7 +56,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.game.stickhero.Main</mainClass>
+                            <mainClass>game.stickhero.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -82,7 +82,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.game.stickhero/com.game.stickhero.Main</mainClass>
+                            <mainClass>game.stickhero/game.stickhero.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
