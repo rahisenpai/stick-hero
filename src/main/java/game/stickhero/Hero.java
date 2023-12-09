@@ -21,7 +21,7 @@ public class Hero extends GameObject {
         this.width = w;
         this.node = node;
         this.avatar = node.getImage();
-        this.stick = new Stick(10,this);
+        this.stick = Factory.createStick(this);
         this.gameplay = g;
     }
 
@@ -68,6 +68,7 @@ public class Hero extends GameObject {
         this.gameplay.addAnimation(translate);
         this.gameplay.addAnimation(rotate);
         translate.play(); rotate.play();
+        Sounds.fall();
         rotate.setOnFinished(e -> {
             this.gameplay.removeAnimation(translate);
             this.gameplay.removeAnimation(rotate);
@@ -92,6 +93,7 @@ public class Hero extends GameObject {
         this.gameplay.getController().getPane().getChildren().add(revive);
         this.gameplay.addAnimation(translate);
         translate.play();
+        Sounds.revive();
         translate.setOnFinished(e -> {
             this.gameplay.removeAnimation(translate);
             int c = this.gameplay.getCherries()-5;
@@ -122,5 +124,8 @@ public class Hero extends GameObject {
     }
     public boolean getInverted() {
         return this.isInverted;
+    }
+    public boolean getWillFall() {
+        return this.willFall;
     }
 }

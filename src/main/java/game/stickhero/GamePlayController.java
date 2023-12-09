@@ -36,12 +36,10 @@ public class GamePlayController implements Controller {
         this.hero = new Hero(75,65,avatar, this.gameplay);
         Stick stick = this.hero.getStick();
         pane.getChildren().add(stick.getRectangle());
-        Pillar p1 = new Pillar(r1);
-        Pillar p2 = new Pillar(r2);
         stick.getRectangle().setLayoutX(127);
         stick.getRectangle().setLayoutY(470);
-        this.cp = new Pillar(r1);
-        this.np = new Pillar(r2);
+        this.cp = Factory.createPillarWithRectangle(r1);
+        this.np = Factory.createPillarWithRectangle(r2);
 
         scene.setOnMousePressed(event -> {
             this.hero.getStick().extend();
@@ -88,6 +86,7 @@ public class GamePlayController implements Controller {
     }
 
     public void gameOver() {
+        Sounds.gameOver();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("gameOver.fxml"));
             this.pane.getChildren().add(root);

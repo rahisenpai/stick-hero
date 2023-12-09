@@ -52,14 +52,14 @@ public class Tests {
 
     @Test
     public void testWillFall1(){
-        Stick stick = new Stick(10,null);
+        Stick stick = new Stick(null);
         boolean b = stick.willFall(60,70,80);
         assertTrue(b);
     }
 
     @Test
     public void testWillFall2(){
-        Stick stick = new Stick(10,null);
+        Stick stick = new Stick(null);
         boolean b = stick.willFall(60,100,80);
         assertFalse(b);
     }

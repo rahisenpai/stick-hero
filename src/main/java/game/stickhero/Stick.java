@@ -14,9 +14,9 @@ public class Stick extends GameObject {
     private Rectangle rectangle;
     private Timeline timeline;
 
-    Stick(int w, Hero hero){
+    Stick(Hero hero){
         this.waiting = 0;
-        this.width = w;
+        this.width = 10;
         this.length = 1;
         this.hero = hero;
         this.rectangle = new Rectangle(this.width,this.length);
@@ -33,6 +33,7 @@ public class Stick extends GameObject {
             timeline.setCycleCount(Timeline.INDEFINITE);
             this.hero.getGameplay().addAnimation(timeline);
             timeline.setOnFinished(e -> this.hero.getGameplay().removeAnimation(timeline));
+            Sounds.extend();
             timeline.play();
         }
     }
@@ -40,6 +41,7 @@ public class Stick extends GameObject {
     public void rotate() {
         if (this.waiting == 1) {
             this.waiting = 2;
+            Sounds.stop();
             timeline.stop();
             this.hero.getGameplay().removeAnimation(timeline);
             Pillar cp = this.hero.getGameplay().getController().getCP();

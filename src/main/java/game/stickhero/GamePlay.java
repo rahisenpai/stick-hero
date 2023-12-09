@@ -19,7 +19,7 @@ public class GamePlay {
     private ArrayList<Animation> animations;
     private Stage stage;
     private GamePlayController controller;
-    private ImageView cherry;
+    private Cherry cherry;
     private boolean cherryPresent=false, collectedCherry=false;
 
     public void display() throws IOException {
@@ -27,12 +27,12 @@ public class GamePlay {
         Scene scene = new Scene(fxmlLoader.load());
         controller = fxmlLoader.getController();
         controller.setup(scene,this.stage,this);
-        this.cherry = new ImageView(new Image(Main.class.getResourceAsStream("cherry.png")));
-        this.cherry.setFitHeight(44);
-        this.cherry.setFitWidth(33);
-        this.cherry.setLayoutY(480);
-        this.controller.getPane().getChildren().add(cherry);
-        this.cherry.setVisible(false);
+        this.cherry = Cherry.getInstance(new ImageView(new Image(Main.class.getResourceAsStream("cherry.png"))));
+        this.cherry.getNode().setFitHeight(44);
+        this.cherry.getNode().setFitWidth(33);
+        this.cherry.getNode().setLayoutY(480);
+        this.controller.getPane().getChildren().add(cherry.getNode());
+        this.cherry.getNode().setVisible(false);
         this.cherryPresent = false;
         this.animations = new ArrayList<Animation>();
         this.controller.getCherries().setText(cherries+"");
@@ -42,7 +42,8 @@ public class GamePlay {
             @Override
             public void handle(long now) {
                 if (!controller.getGameplay().getCollectedCherry()) {
-                    if (checkCollision(controller.getHero().getNode(), cherry)) {
+                    if (checkCollision(controller.getHero().getNode(), cherry.getNode())) {
+                        Sounds.cherry();
                         controller.getGameplay().setCollectedCherry(true);
                         int score = controller.getGameplay().getScore()+1;
                         controller.getGameplay().setScore(score);
@@ -65,7 +66,7 @@ public class GamePlay {
         double distance = (cp.getRectangle().getLayoutX()+cp.getRectangle().getWidth()) - (np.getRectangle().getLayoutX()+np.getRectangle().getWidth());
         if (this.cherryPresent){
             this.cherryPresent = false;
-            this.cherry.setVisible(false);
+            this.cherry.getNode().setVisible(false);
         }
 
         KeyFrame k1 = new KeyFrame(Duration.ZERO, new KeyValue(hero.getNode().layoutXProperty(), hero.getNode().getLayoutX()),
@@ -81,18 +82,21 @@ public class GamePlay {
         timeline.setOnFinished(e -> {
             this.animations.remove(timeline);
             this.score++;
+            if (!this.controller.getHero().getWillFall()) {
+                Sounds.score();
+            }
             Main.getGame().updateScore(this.score);
             this.controller.getScore().setText(this.score.toString());
-            Stick newStick = new Stick(10, hero);
+            Stick newStick = Factory.createStick(hero);
             hero.setStick(newStick);
             newStick.getRectangle().setLayoutX(127);
             newStick.getRectangle().setLayoutY(470);
-            Pillar newP = new Pillar(75 + (int)(Math.random() * ((150-75) + 1)));
+            Pillar newP = Factory.createPillarWithWidth(75 + (int)(Math.random() * ((150-75) + 1)));
             newP.getRectangle().setLayoutX(200 + (int)(Math.random() * ((550-200) + 1)));
             newP.getRectangle().setLayoutY(470);
             if (Math.random()*4 < 1){
-                this.cherry.setLayoutX(200 + (int)(Math.random() * ((newP.getRectangle().getLayoutX()-250) + 1)));
-                this.cherry.setVisible(true);
+                this.cherry.getNode().setLayoutX(200 + (int)(Math.random() * ((newP.getRectangle().getLayoutX()-250) + 1)));
+                this.cherry.getNode().setVisible(true);
                 this.cherryPresent = true;
             }
             this.controller.getPane().getChildren().addAll(newStick.getRectangle(), newP.getRectangle());

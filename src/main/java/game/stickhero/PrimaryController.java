@@ -75,6 +75,7 @@ public class PrimaryController implements Controller {
     }
 
     public void startGame(ActionEvent event) throws IOException {
+        Sounds.stop();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         newGamePlay = new GamePlay(stage);
         newGamePlay.display();
@@ -89,6 +90,7 @@ public class PrimaryController implements Controller {
     }
 
     public void loadHome(ActionEvent event) throws IOException {
+        Sounds.stop();
         root = FXMLLoader.load(getClass().getResource("home.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
