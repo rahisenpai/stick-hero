@@ -30,7 +30,7 @@ public class PrimaryController {
     public void save(ActionEvent event){
         Button b = ((Button)(Node)event.getSource());
         SavedGame savesGame = new SavedGame(newGamePlay.getScore(), newGamePlay.getCherries());
-        if (Main.getGame().getSavedGames().isEmpty()) {
+        if (!Main.getGame().getSavedGames().isEmpty()) {
             Main.getGame().getSavedGames().remove(0);
         }
         ObjectOutputStream out = null;
@@ -85,7 +85,7 @@ public class PrimaryController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         Text highscore = new Text("HIGH SCORE: "+Main.getGame().getHighscore());
-        highscore.setWrappingWidth(255);
+        highscore.setWrappingWidth(300);
         highscore.setLayoutX(257);
         highscore.setLayoutY(84);
         highscore.setTabSize(32);

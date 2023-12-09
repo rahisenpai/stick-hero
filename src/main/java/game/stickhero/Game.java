@@ -28,7 +28,7 @@ public class Game extends javafx.application.Application implements Serializable
         stage.getIcons().add(new Image(Main.class.getResourceAsStream("hero.png")));
 
         Text highscore = new Text("HIGH SCORE: "+Main.getGame().getHighscore());
-        highscore.setWrappingWidth(255);
+        highscore.setWrappingWidth(300);
         highscore.setLayoutX(257);
         highscore.setLayoutY(84);
         highscore.setTabSize(32);
@@ -41,7 +41,7 @@ public class Game extends javafx.application.Application implements Serializable
         load.setPrefSize(95,50);
         load.setOnAction(e -> controller.loadSavedGame(stage));
 
-        if (!this.savedGames.isEmpty()){
+        if (!Main.getGame().getSavedGames().isEmpty()){
             pane.getChildren().add(load);
         }
         pane.getChildren().add(highscore);

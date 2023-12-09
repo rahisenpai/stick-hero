@@ -54,6 +54,12 @@ public class GamePlayController {
             if (code.equals("SPACE")){
                 this.hero.getStick().extend();
             }
+            else if (code.equals("UP")){
+                this.hero.deInvert();
+            }
+            else if (code.equals("DOWN")){
+                this.hero.invert();
+            }
             else if (code.equals("ESCAPE")){
                 this.gameplay.getAnimations().forEach(Animation::pause);
                 pause();
@@ -124,5 +130,8 @@ public class GamePlayController {
     }
     public AnchorPane getPane() {
         return pane;
+    }
+    public GamePlay getGameplay() {
+        return gameplay;
     }
 }
