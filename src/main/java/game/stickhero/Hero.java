@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 
-public class Hero {
+public class Hero extends GameObject {
     private boolean willFall=false, isMoving=false, isInverted=false;
     private int height, width;
     private Stick stick;
@@ -119,5 +119,8 @@ public class Hero {
     }
     public GamePlay getGameplay() {
         return gameplay;
+    }
+    public boolean getInverted() {
+        return this.isInverted;
     }
 }

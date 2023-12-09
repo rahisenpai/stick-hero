@@ -145,7 +145,4 @@ public class GamePlay {
     public void setCherries(Integer cherries) {
         this.cherries = cherries;
     }
-    public Stage getStage() {
-        return stage;
-    }
 }

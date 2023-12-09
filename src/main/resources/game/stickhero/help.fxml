@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.PointLight?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="game.stickhero.PrimaryController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0" opacity="0.75" pickOnBounds="true">
+         <image>
+            <Image url="@sky.jpg" />
+         </image>
+      </ImageView>
+      <PointLight color="CHARTREUSE" lightOn="true" />
+      <AnchorPane accessibleText="Help" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Rectangle arcHeight="3.0" arcWidth="5.0" height="77.0" layoutX="24.0" layoutY="523.0" stroke="BLACK" strokeType="INSIDE" width="79.0" />
+            <ImageView fitHeight="65.0" fitWidth="75.0" layoutX="39.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@hero.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="254.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOW TO PLAY" wrappingWidth="282.7294921875">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Text>
+            <Text fill="#13264a" fontSmoothingType="LCD" layoutX="298.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click SPACE or hold left mouse to extend stick" wrappingWidth="495.7366943359375">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="40.0" fitWidth="200.0" layoutX="100.0" layoutY="103.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@spacebar.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="208.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@up.jpg" />
+               </image>
+            </ImageView>
+            <Text fontSmoothingType="LCD" layoutX="284.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click UP to get stick hero above the stick" textAlignment="CENTER" wrappingWidth="451.13671875">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="51.0" fitWidth="59.0" layoutX="206.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@down.jpg" />
+               </image>
+            </ImageView>
+            <Text fontSmoothingType="LCD" layoutX="304.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click DOWN to get stick hero below the stick">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="94.0" fitWidth="53.0" layoutX="206.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@esc.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="303.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click ESC to pause" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="52.0" fitWidth="50.0" layoutX="213.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cherry.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="298.0" layoutY="432.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cherries spawn with a probability of 20%">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="52.0" fitWidth="98.0" layoutX="205.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@5.jpg" />
+               </image>
+            </ImageView>
+            <Text layoutX="298.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alteast 5 cherries needed for revive">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1c1d1e" height="10.0" layoutX="103.0" layoutY="523.0" stroke="#281515" strokeType="INSIDE" width="200.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="77.0" layoutX="303.0" layoutY="523.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="10.0" layoutX="360.0" layoutY="523.0" stroke="BLACK" strokeType="INSIDE" width="357.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="77.0" layoutX="717.0" layoutY="523.0" stroke="BLACK" strokeType="INSIDE" width="62.0" />
+            <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="113.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cherry.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="462.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cherry.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="44.0" fitWidth="40.0" layoutX="665.0" layoutY="537.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cherry.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="65.0" fitWidth="75.0" layoutX="711.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@hero.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="65.0" fitWidth="75.0" layoutX="376.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@hero.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="669.0" layoutY="26.0" mnemonicParsing="false" onAction="#loadHome" text="HOME">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

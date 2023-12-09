@@ -4,12 +4,22 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 
 public class Main{
     private static Game game;
 
     public static void main(String[] args) {
+        Result result = JUnitCore.runClasses(Tests.class);
+        System.out.println("----- T E S T S -----");
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+        System.out.println(result.wasSuccessful());
+        System.out.println("---------------------");
         File gameData = new File("src/main/data/StickHero.txt");
         if (gameData.exists()){
             game = deserializeGame();

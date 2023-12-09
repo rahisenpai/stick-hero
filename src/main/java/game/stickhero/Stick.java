@@ -6,7 +6,7 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 
-public class Stick {
+public class Stick extends GameObject {
     private Hero hero;
     final private int width;
     private int waiting;
@@ -67,5 +67,8 @@ public class Stick {
     }
     public double getLength() {
         return length;
+    }
+    public boolean willFall(int dist1,int dist2, int len){
+        return dist1>len || dist2<len;
     }
 }

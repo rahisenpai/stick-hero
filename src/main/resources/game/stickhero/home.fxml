@@ -38,6 +38,11 @@
                <Font size="24.0" />
             </font>
          </Button>
+         <Button layoutX="430.0" layoutY="380.0" mnemonicParsing="false" onAction="#help" text="HELP">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Button>
       </children>
    </AnchorPane>
 </StackPane>

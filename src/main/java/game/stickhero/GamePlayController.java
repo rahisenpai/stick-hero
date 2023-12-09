@@ -13,7 +13,7 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 
-public class GamePlayController {
+public class GamePlayController implements Controller {
     private boolean paused=false;
     private Stage stage;
     private Scene scene;
