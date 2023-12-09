@@ -17,7 +17,7 @@
    </ImageView>
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
       <children>
-         <Button layoutX="259.0" layoutY="273.0" mnemonicParsing="false" onAction="#startGame" text="PLAY">
+         <Button layoutX="344.0" layoutY="279.0" mnemonicParsing="false" onAction="#startGame" text="PLAY">
             <font>
                <Font size="24.0" />
             </font>
@@ -33,7 +33,7 @@
                <Image url="@hero.png" />
             </image>
          </ImageView>
-         <Button layoutX="407.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitGame" text="EXIT">
+         <Button layoutX="440.0" layoutY="279.0" mnemonicParsing="false" onAction="#exitGame" text="EXIT">
             <font>
                <Font size="24.0" />
             </font>

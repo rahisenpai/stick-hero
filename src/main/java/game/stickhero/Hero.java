@@ -53,6 +53,8 @@ public class Hero {
             this.gameplay.removeAnimation(translate);
             this.gameplay.removeAnimation(rotate);
             this.gameplay.getController().gameOver();
+            Main.getGame().updateScore(this.gameplay.getScore());
+            Main.getGame().serialize();
         });
     }
 

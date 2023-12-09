@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 public class GamePlay {
-    private int cherries;
+    private Integer cherries=0, score=0;
     private ArrayList<Animation> animations;
     private Stage stage;
     private GamePlayController controller;
@@ -24,6 +24,8 @@ public class GamePlay {
         controller = fxmlLoader.getController();
         controller.setup(scene,this.stage,this);
         this.animations = new ArrayList<Animation>();
+        this.controller.getCherries().setText(cherries+"");
+        this.controller.getScore().setText(score+"");
         stage.setScene(scene);
     }
 
@@ -46,6 +48,8 @@ public class GamePlay {
 
         timeline.setOnFinished(e -> {
             this.animations.remove(timeline);
+            this.score++;
+            this.controller.getScore().setText(this.score.toString());
             Stick newStick = new Stick(10, hero);
             hero.setStick(newStick);
             newStick.getRectangle().setLayoutX(127);
@@ -73,7 +77,18 @@ public class GamePlay {
     public GamePlay(Stage stage){
         this.stage = stage;
     }
+    public GamePlay(Stage stage,SavedGame sg){
+        this.stage = stage;
+        this.cherries = Integer.valueOf(sg.getCherries());
+        this.score = Integer.valueOf(sg.getScore());
+    }
     public GamePlayController getController() {
         return controller;
+    }
+    public Integer getScore() {
+        return score;
+    }
+    public Integer getCherries() {
+        return cherries;
     }
 }

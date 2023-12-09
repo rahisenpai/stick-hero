@@ -19,17 +19,17 @@
             <Font size="48.0" />
          </font>
       </Text>
-      <Button layoutX="166.0" layoutY="186.0" mnemonicParsing="false" text="SAVE">
+      <Button layoutX="146.0" layoutY="186.0" mnemonicParsing="false" onAction="#save" prefHeight="51.0" prefWidth="126.0" text="SAVE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#resume" prefHeight="51.0" prefWidth="125.0" text="RESUME">
+      <Button layoutX="11.0" layoutY="186.0" mnemonicParsing="false" onAction="#resume" prefHeight="51.0" prefWidth="125.0" text="RESUME">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="273.0" layoutY="186.0" mnemonicParsing="false" onAction="#loadHome" text="HOME">
+      <Button layoutX="282.0" layoutY="186.0" mnemonicParsing="false" onAction="#loadHome" text="HOME">
          <font>
             <Font size="24.0" />
          </font>

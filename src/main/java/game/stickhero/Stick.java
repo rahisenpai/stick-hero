@@ -44,7 +44,7 @@ public class Stick {
             this.hero.getGameplay().removeAnimation(timeline);
             Pillar cp = this.hero.getGameplay().getController().getCP();
             Pillar np = this.hero.getGameplay().getController().getNP();
-            double distance = np.getRectangle().getLayoutX() - (cp.getRectangle().getLayoutX()+cp.getRectangle().getWidth());
+            double distance = np.getRectangle().getLayoutX() - (cp.getRectangle().getLayoutX()+cp.getRectangle().getWidth())+3;
             if(this.length<distance || this.length>distance+np.getRectangle().getWidth()){
                 this.hero.setWillFall(true);
             }

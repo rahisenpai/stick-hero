@@ -4,23 +4,24 @@ import javafx.animation.Animation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import java.io.IOException;
 
 
 public class GamePlayController {
+    private boolean paused=false;
     private Stage stage;
     private Scene scene;
     private GamePlay gameplay;
     private  Hero hero;
     private Pillar cp,np;
     @FXML
-    private Label cherries;
+    private Text cherries,score;
     @FXML
     private AnchorPane pane;
     @FXML
@@ -67,13 +68,16 @@ public class GamePlayController {
     }
 
     public void pause() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("pause.fxml"));
-            this.pane.getChildren().add(root);
-            root.setLayoutX(200);
-            root.setLayoutY(150);
-        } catch(IOException e) {
-            e.printStackTrace();
+        if (!this.paused) {
+            this.paused = true;
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("pause.fxml"));
+                this.pane.getChildren().add(root);
+                root.setLayoutX(200);
+                root.setLayoutY(150);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -88,6 +92,15 @@ public class GamePlayController {
         }
     }
 
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+    public Text getScore() {
+        return score;
+    }
+    public Text getCherries() {
+        return cherries;
+    }
     public Hero getHero() {
         return hero;
     }
@@ -102,6 +115,12 @@ public class GamePlayController {
     }
     public void setCp(Pillar cp) {
         this.cp = cp;
+    }
+    public void setCherries(Text cherries) {
+        this.cherries = cherries;
+    }
+    public void setScore(Text score) {
+        this.score = score;
     }
     public AnchorPane getPane() {
         return pane;
