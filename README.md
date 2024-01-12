@@ -9,8 +9,6 @@ For development:
 - Build: `mvn clean compile package`
 - Clean: `mvn clean`</br>
 
-Link to GitHub private repository: https://github.com/rahi-senpai/stick-hero
-
 ## Game Info
 - We have implemented Singleton (in `Cherry.class`) and Factory (in `Factory.class`) design patterns in this project.
 - There is 20% chance for a cherry to spawn.
